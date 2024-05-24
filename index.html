@@ -72,19 +72,19 @@
                                     <form action="register.php" method="POST">
                                         <div class="mb-3">
                                             <label for="registerName" class="form-label">Name</label>
-                                            <input type="text" name="name" class="form-control" id="registerName" placeholder="Enter your name">
+                                            <input type="text" name="name" class="form-control" id="registerName" placeholder="Enter your name" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="registerSurname" class="form-label">Surname</label>
-                                            <input type="text" name="surname" class="form-control" id="registerSurname" placeholder="Enter your surname">
+                                            <input type="text" name="surname" class="form-control" id="registerSurname" placeholder="Enter your surname" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="registerBirthdate" class="form-label">Birthdate</label>
-                                            <input type="date" name="birthdate" class="form-control" id="registerBirthdate">
+                                            <input type="date" name="birthdate" class="form-control" id="registerBirthdate" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="registerGender" class="form-label">Gender</label>
-                                            <select class="form-select" name="gender" id="registerGender">
+                                            <select class="form-select" name="gender" id="registerGender" required>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                                 <option value="other">Other</option>
@@ -92,15 +92,15 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="registerEmail" class="form-label">Email</label>
-                                            <input type="email" name="email" class="form-control" id="registerEmail" placeholder="Enter your email">
+                                            <input type="email" name="email" class="form-control" id="registerEmail" placeholder="Enter your email" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="registerPassword" class="form-label">Password</label>
-                                            <input type="password" name="password" class="form-control" id="registerPassword" placeholder="Enter your password">
+                                            <input type="password" name="password" class="form-control" id="registerPassword" placeholder="Enter your password" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="registerRole" class="form-label">Role</label>
-                                            <select class="form-select" name="role" id="registerRole">
+                                            <select class="form-select" name="role" id="registerRole" required>
                                                 <option value="user">User</option>
                                                 <option value="developer">Developer</option>
                                                 <option value="engineer">Engineer</option>
