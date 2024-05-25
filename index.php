@@ -46,7 +46,6 @@ session_start();
                         <!-- Show login and register buttons if user is not logged in -->
                         <button class="btn btn-outline-dark mx-2" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                         <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
-
                     <?php endif; ?>
                 </div>
 
