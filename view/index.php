@@ -2,6 +2,10 @@
 session_start();
 ?>
 
+include '../model/login.php';
+include '../model/register.php';
+include '../model/logout.php';
+
 <!DOCTYPE html>
 <html lang="en">
 
