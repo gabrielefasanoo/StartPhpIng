@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Credenziali corrette, memorizza le informazioni di sessione
         $username = "SELECT name FROM users WHERE $stored_email = $log_email";
         $_SESSION['username'] = $username;
-        header('Location: index.html');
+        header('Location: index.php');
         exit();
     } else {
         echo 'Nome utente o password errati!';
