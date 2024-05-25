@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 ?>
 
@@ -39,7 +40,7 @@ session_start();
                                 <?php echo htmlspecialchars($_SESSION['username']); ?>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                <li><a class="dropdown-item" href="model/logout.php">Logout</a></li>
                             </ul>
                         </div>
                     <?php else : ?>
@@ -59,7 +60,7 @@ session_start();
                             </div>
                             <div class="modal-body">
                                 <!-- Login form -->
-                                <form action="login.php" method="POST" id="loginForm">
+                                <form action="model/login.php" method="POST" id="loginForm">
                                     <div class="mb-3">
                                         <label for="loginEmail" class="form-label">Email</label>
                                         <input type="email" name="LoginEmail" class="form-control" id="loginEmail" placeholder="Enter your email" required>
@@ -87,7 +88,7 @@ session_start();
                         </div>
                         <div class="modal-body">
                             <!-- Register form -->
-                            <form action="register.php" method="POST">
+                            <form action="model/register.php" method="POST">
                                 <div class="mb-3">
                                     <label for="registerName" class="form-label">Name</label>
                                     <input type="text" name="name" class="form-control" id="registerName" placeholder="Enter your name" required>
@@ -279,7 +280,6 @@ session_start();
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
 </body>
 
 </html>
