@@ -1,4 +1,8 @@
 <?php
+include 'model/login.php';
+include 'model/logout.php';
+include 'model/register.php';
+
 session_start();
 ?>
 

@@ -1,5 +1,5 @@
 <?php
-include 'view/index.php';
+
 
 $conn = new mysqli("localhost", "root", "", "test");
 if ($conn->connect_errno) {

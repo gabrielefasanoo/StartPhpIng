@@ -1,5 +1,5 @@
 <?php
-include 'view/index.php';
+
 
 session_start();
 session_unset();
