@@ -60,7 +60,7 @@ session_start();
                             </div>
                             <div class="modal-body">
                                 <!-- Login form -->
-                                <form action="model/login.php" method="POST" id="loginForm">
+                                <form action="login.php" method="POST" id="loginForm">
                                     <div class="mb-3">
                                         <label for="loginEmail" class="form-label">Email</label>
                                         <input type="email" name="LoginEmail" class="form-control" id="loginEmail" placeholder="Enter your email" required>
