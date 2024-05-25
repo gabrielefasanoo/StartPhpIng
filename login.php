@@ -7,21 +7,31 @@ if ($conn->connect_errno) {
     exit();
 }
 
-// Credenziali presenti nel DB
-$stored_email = "SELECT email FROM users";
-$stored_psw_hash = "SELECT password FROM users";
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $log_email = $_POST['LoginEmail'];
     $log_psw = $_POST['LoginPassword'];
 
-    // Verifica delle credenziali
-    if ($log_email === $stored_email && password_verify($log_psw, $stored_psw_hash)) {
-        // Credenziali corrette, memorizza le informazioni di sessione
-        $username = "SELECT name FROM users WHERE $stored_email = $log_email";
-        $_SESSION['username'] = $username;
-        header('Location: index.php');
-        exit();
+    // Preparazione della query
+    $stmt = $conn->prepare("SELECT email, password, name FROM users WHERE email = ?");
+    $stmt->bind_param("s", $log_email);
+
+    // Esecuzione della query
+    $stmt->execute();
+
+    // Ottieni i risultati
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user) {
+        // Verifica delle credenziali
+        if (password_verify($log_psw, $user['password'])) {
+            // Credenziali corrette, memorizza le informazioni di sessione
+            $_SESSION['username'] = $user['name'];
+            header('Location: index.php');
+            exit();
+        } else {
+            echo 'Nome utente o password errati!';
+        }
     } else {
         echo 'Nome utente o password errati!';
     }
