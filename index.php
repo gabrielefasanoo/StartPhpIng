@@ -34,7 +34,7 @@ session_start();
                 </ul>
                 <div>
                     <?php if (isset($_SESSION['username'])) : ?>
-                        <!-- Show username and logout button if user is logged in -->
+                        <!-- Se l'utente è loggao mostra il nome utente con profilo e azione di logout -->
                         <div class="btn-group">
                             <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo htmlspecialchars($_SESSION['username']); ?>
@@ -45,7 +45,7 @@ session_start();
                             </ul>
                         </div>
                     <?php else : ?>
-                        <!-- Show login and register buttons if user is not logged in -->
+                        <!-- Se l'utente non è loggato allora mostra i bottoni di registrazione e login -->
                         <button class="btn btn-outline-dark mx-2" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                         <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
                     <?php endif; ?>

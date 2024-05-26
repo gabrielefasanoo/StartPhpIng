@@ -32,8 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($stmt->affected_rows > 0) {
-        /*$_SESSION['user_id'] = $conn->insert_id;
-        $_SESSION['user_name'] = $name;*/
         echo "Registration successful";
         header("Location: ../index.php");
         exit();

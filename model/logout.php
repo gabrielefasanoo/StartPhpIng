@@ -4,6 +4,6 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location: ../index.php"); // Redirect to homepage or login page after logout
+header("Location: ../index.php"); // Reindirizza l'utente nella homepage dopo il logout
 exit();
 ?>
