@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (password_verify($log_psw, $user['password'])) {
             // Credenziali corrette, memorizza le informazioni di sessione
             $_SESSION['username'] = $user['name'];
-            header('Location: index.php');
+            header('Location: ../index.php');
             exit();
         } else {
             echo 'Nome utente o password errati!';

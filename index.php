@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 ?>
 
@@ -10,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Homepage - Bootstrap Template</title>
+    <title>Project X wiki</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -23,13 +24,13 @@ session_start();
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">Start Bootstrap</a>
+            <a class="navbar-brand" href="index.php">Homepage</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Pattern</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">PKB table</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">GDPR info</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Area Feedback</a></li>
                 </ul>
                 <div>
                     <?php if (isset($_SESSION['username'])) : ?>
@@ -39,14 +40,14 @@ session_start();
                                 <?php echo htmlspecialchars($_SESSION['username']); ?>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                <li><a class="dropdown-item" href="#">Profilo</a></li>
+                                <li><a class="dropdown-item" href="model/logout.php">Logout</a></li>
                             </ul>
                         </div>
                     <?php else : ?>
                         <!-- Show login and register buttons if user is not logged in -->
                         <button class="btn btn-outline-dark mx-2" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                         <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
-
                     <?php endif; ?>
                 </div>
 
@@ -60,7 +61,7 @@ session_start();
                             </div>
                             <div class="modal-body">
                                 <!-- Login form -->
-                                <form action="login.php" method="POST" id="loginForm">
+                                <form action="model/login.php" method="POST" id="loginForm">
                                     <div class="mb-3">
                                         <label for="loginEmail" class="form-label">Email</label>
                                         <input type="email" name="LoginEmail" class="form-control" id="loginEmail" placeholder="Enter your email" required>
@@ -88,7 +89,7 @@ session_start();
                         </div>
                         <div class="modal-body">
                             <!-- Register form -->
-                            <form action="register.php" method="POST">
+                            <form action="model/register.php" method="POST">
                                 <div class="mb-3">
                                     <label for="registerName" class="form-label">Name</label>
                                     <input type="text" name="name" class="form-control" id="registerName" placeholder="Enter your name" required>
@@ -280,7 +281,6 @@ session_start();
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
 </body>
 
 </html>
