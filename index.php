@@ -34,7 +34,7 @@ session_start();
                 </ul>
                 <div>
                     <?php if (isset($_SESSION['username'])) : ?>
-                        <!-- Se l'utente è loggao mostra il nome utente con profilo e azione di logout -->
+                        <!-- Se l'utente è loggato mostra il nome utente con profilo e azione di logout -->
                         <div class="btn-group">
                             <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?php echo htmlspecialchars($_SESSION['username']); ?>
@@ -145,8 +145,21 @@ session_start();
             </div>
         </div>
     </header>
-    <!-- Section-->
-    <section class="py-5">
+    <?php if (isset($_SESSION['username'])) : ?>
+        <!-- Se l'utente è loggato, notifica l'avvenuto login con un banner -->
+        <div class="alert alert-success" role="alert">
+            <strong>Utente loggato con successo, benvenuto <?php echo $_SESSION['username'] ?></strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php else : ?>
+        <!-- Se l'utente non è ancora loggato o registrato, segnala di compiere login o registrazione -->
+        <div class="alert alert-warning" role="alert">
+            <strong>Attenzione! Non sei ancora registrato o non hai effettuato il login con le tue credenziali</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>   
+    <!-- Section-->    
+    <section class="py-5">     
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5">
