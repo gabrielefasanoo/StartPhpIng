@@ -7,10 +7,9 @@ session_start();
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Project X wiki</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -40,7 +39,7 @@ session_start();
                                 <?php echo htmlspecialchars($_SESSION['username']); ?>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Profilo</a></li>
+                                <li><a class="dropdown-item" href="profilo.php">Profilo</a></li>
                                 <li><a class="dropdown-item" href="model/logout.php">Logout</a></li>
                             </ul>
                         </div>
@@ -136,7 +135,7 @@ session_start();
     </nav>
     <!-- Header-->
     <header class="bg-dark py-5">
-        <div class="container px-2 px-lg-5 my-5">
+        <div class=" px-2 px-lg-5 my-5">
             <div class="text-center text-white">
                 <div class="input-group">
                     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -160,7 +159,7 @@ session_start();
     <?php endif; ?>   
     <!-- Section-->    
     <section class="py-5">     
-        <div class="container px-4 px-lg-5 mt-5">
+        <div class=" px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5">
                     <div class="card h-100">
