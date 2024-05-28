@@ -1,29 +1,39 @@
 <?php
 session_start();
 include '../control/conn.php';
+
+function query_select($conn, $email) {
+    $stmt = $conn->prepare("SELECT email, password, name FROM users WHERE email = ?");
+    if (!$stmt) {
+        echo "Errore nella preparazione della query: " . $conn->error;
+        return false;
+    }
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
+}
+
+function confronto_credenziali($input_password, $stored_password) {
+    return password_verify($input_password, $stored_password);
+}
+
+function inizio_sessione($email, $name) {
+    $_SESSION['email'] = $email; 
+    $_SESSION['username'] = $name;
+    header('Location: ../index.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $log_email = $_POST['LoginEmail'];
     $log_psw = $_POST['LoginPassword'];
 
-    // Preparazione della query
-    $stmt = $conn->prepare("SELECT email, password, name FROM users WHERE email = ?");
-    $stmt->bind_param("s", $log_email);
-
-    // Esecuzione della query
-    $stmt->execute();
-
-    // Ottieni i risultati
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
+    $user = query_select($conn, $log_email);
 
     if ($user) {
-        // Verifica delle credenziali
-        if (password_verify($log_psw, $user['password'])) {
-            // Credenziali corrette, memorizza le informazioni di sessione
-            $_SESSION['email'] = $log_email; // Memorizza l'email anziché l'username
-            $_SESSION['username'] = $user['name'];
-            header('Location: ../index.php');
-            exit();
+        if (confronto_credenziali($log_psw, $user['password'])) {
+            inizio_sessione($log_email, $user['name']);
         } else {
             echo 'Email o password errati!';
         }
