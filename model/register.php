@@ -1,6 +1,6 @@
 <?php
 
-include 'conn.php';
+include '../control/conn.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump($_POST); // Verifica se il form è stato inviato correttamente

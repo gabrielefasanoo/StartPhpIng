@@ -1,6 +1,6 @@
 <?php
 session_start();
-  include 'model/conn.php';  
+  include 'control/conn.php';  
 // Verifica se l'utente è loggato
 if (!isset($_SESSION['email'])) { // Verifica l'email anziché l'username
     echo 'Accesso non autorizzato!';

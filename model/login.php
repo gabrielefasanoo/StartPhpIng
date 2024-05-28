@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'conn.php';
+include '../control/conn.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $log_email = $_POST['LoginEmail'];
     $log_psw = $_POST['LoginPassword'];
