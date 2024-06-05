@@ -6,15 +6,15 @@ function password_criptata($password) {
     return password_hash($password, PASSWORD_DEFAULT);
 }
 
-function query_insert($conn, $name, $surname, $birthdate, $gender, $email, $password, $role) {
-    $sql = "INSERT INTO users (name, surname, birthdate, gender, email, password, role) VALUES (?, ?, ?, ?, ?, ?, ?)";
+function query_insert($conn, $name, $surname, $gender, $email, $password, $role) {
+    $sql = "INSERT INTO users (name, surname, gender, email, password, role) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         echo "Errore nella preparazione della query: " . $conn->error;
         return false;
     }
 
-    $stmt->bind_param("sssssss", $name, $surname, $birthdate, $gender, $email, $password, $role);
+    $stmt->bind_param("ssssss", $name, $surname, $gender, $email, $password, $role);
     if (!$stmt->execute()) {
         echo "Errore nell'esecuzione della query: " . $stmt->error;
         return false;
@@ -33,13 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = $_POST['name'];
     $surname = $_POST['surname'];
-    $birthdate = $_POST['birthdate'];
     $gender = $_POST['gender'];
     $email = $_POST['email'];
     $password = password_criptata($_POST['password']); // Hash della password
     $role = $_POST['role'];
 
-    if (query_insert($conn, $name, $surname, $birthdate, $gender, $email, $password, $role)) {
+    if (query_insert($conn, $name, $surname, $gender, $email, $password, $role)) {
         echo "Registration successful";
         header("Location: ../index.php");
         exit();

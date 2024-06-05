@@ -1,6 +1,6 @@
 <?php
 session_start();
-  include 'control/conn.php';  
+include 'control/conn.php';
 // Verifica se l'utente è loggato
 if (!isset($_SESSION['email'])) { // Verifica l'email anziché l'username
     echo 'Accesso non autorizzato!';
@@ -30,8 +30,9 @@ if ($result->num_rows > 0) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -43,6 +44,7 @@ if ($result->num_rows > 0) {
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
 </head>
+
 <body>
     <!-- Il tuo header va qui -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -74,87 +76,10 @@ if ($result->num_rows > 0) {
                     <?php endif; ?>
                 </div>
 
-                <!-- Login Modal -->
-                <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Login form -->
-                                <form action="model/login.php" method="POST" id="loginForm">
-                                    <div class="mb-3">
-                                        <label for="loginEmail" class="form-label">Email</label>
-                                        <input type="email" name="LoginEmail" class="form-control" id="loginEmail" placeholder="Enter your email" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="loginPassword" class="form-label">Password</label>
-                                        <input type="password" name="LoginPassword" class="form-control" id="loginPassword" placeholder="Enter your password" required>
-                                    </div>
-                                    <div class="alert alert-danger d-none" id="loginError" role="alert"></div>
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
-            <!-- Register Modal -->
-            <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="registerModalLabel">Register</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Register form -->
-                            <form action="model/register.php" method="POST">
-                                <div class="mb-3">
-                                    <label for="registerName" class="form-label">Name</label>
-                                    <input type="text" name="name" class="form-control" id="registerName" placeholder="Enter your name" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="registerSurname" class="form-label">Surname</label>
-                                    <input type="text" name="surname" class="form-control" id="registerSurname" placeholder="Enter your surname" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="registerBirthdate" class="form-label">Birthdate</label>
-                                    <input type="date" name="birthdate" class="form-control" id="registerBirthdate" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="registerGender" class="form-label">Gender</label>
-                                    <select class="form-select" name="gender" id="registerGender" required>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="registerEmail" class="form-label">Email</label>
-                                    <input type="email" name="email" class="form-control" id="registerEmail" placeholder="Enter your email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="registerPassword" class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control" id="registerPassword" placeholder="Enter your password" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="registerRole" class="form-label">Role</label>
-                                    <select class="form-select" name="role" id="registerRole" required>
-                                        <option value="user">User</option>
-                                        <option value="developer">Developer</option>
-                                        <option value="engineer">Engineer</option>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Register</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </nav>
     <!-- Qui mostri i dati dell'utente -->
@@ -163,13 +88,17 @@ if ($result->num_rows > 0) {
         <p>Nome: <?php echo htmlspecialchars($user['name']); ?></p>
         <p>Cognome: <?php echo htmlspecialchars($user['surname']); ?></p>
         <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
-        <!-- Aggiungi altri campi come necessario -->
+
+        <form action="model/deleteAccount.php" method="POST">
+            <input type="hidden" name="email" value="<?php echo htmlspecialchars($user['email']); ?>">
+            <button type="submit" class="btn btn-danger">Elimina account</button>
+        </form>
     </div>
 
 
 
-     <!-- Footer-->
-     <footer class="py-5 bg-dark">
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white"></p>
         </div>

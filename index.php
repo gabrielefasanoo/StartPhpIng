@@ -27,7 +27,7 @@ session_start();
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">PKB table</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="pkb.php">PKB table</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">GDPR info</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Area Feedback</a></li>
                 </ul>
@@ -96,10 +96,6 @@ session_start();
                                 <div class="mb-3">
                                     <label for="registerSurname" class="form-label">Surname</label>
                                     <input type="text" name="surname" class="form-control" id="registerSurname" placeholder="Enter your surname" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="registerBirthdate" class="form-label">Birthdate</label>
-                                    <input type="date" name="birthdate" class="form-control" id="registerBirthdate" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="registerGender" class="form-label">Gender</label>
