@@ -1,3 +1,12 @@
+<?php
+session_start();
+include 'control/conn.php';
+// Verifica se l'utente è loggato
+if (!isset($_SESSION['email'])) { // Verifica l'email anziché l'username
+    echo 'Accesso non autorizzato!';
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,17 +50,12 @@
                     <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
                 <?php endif; ?>
             </div>
-
-
         </div>
-
-
     </div>
 </nav>
 
 <body>
     <?php
-
     include 'control/conn.php';
     // Verifica della connessione
     if ($conn->connect_error) {
@@ -66,16 +70,63 @@
         echo '<div class="row">';
         // Output dei dati in forma di card per ciascuna riga
         while ($row = $result->fetch_assoc()) {
+            // Genera un ID univoco per il bottone e il modal
+            $unique_id = 'modal' . $row['id'];
     ?>
-     <div class="col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $row['nome']; ?></h5>
-                    <p class="card-text"><?php echo $row['descrizione']; ?></p>
-                    <!-- Aggiungi qui gli altri campi della tabella come necessario -->
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $row['nome']; ?></h5>
+                        <p class="card-text"><?php echo substr($row['descrizione'],0,100); ?>...</p>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#<?php echo $unique_id; ?>">More Info</button>
+                        <!-- Aggiungi qui il codice per il modal -->
+                        <div class="modal fade" id="<?php echo $unique_id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel<?php echo $unique_id; ?>" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel<?php echo $unique_id; ?>">Modal Title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Contenuto del modal -->
+                                        <h5 class="card-title"><?php echo $row['nome']; ?></h5>
+                                        <p class="card-text"><?php echo $row['descrizione']; ?></p>
+                                        <hr>
+                                        <h5 class="card-title">Context Pattern</h5>
+                                        <p class="card-text"><?php echo $row['context_pattern']; ?></p>
+                                        <hr>
+                                        <h5 class="card-title">Collocazione MVC</h5>
+                                        <p class="card-text"><?php echo $row['collocazione_mvc']; ?></p>
+                                        <hr>
+                                        <h5 class="card-title">ISO 9241-210 Phase</h5>
+                                        <p class="card-text"><?php echo $row['iso_9241_210_phase']; ?></p>
+
+                                        <hr>
+                                        <h5 class="card-title           ">GDPR</h5>
+                                        <p class="card-text"><?php echo $row['article_gdpr']; ?></p>
+                                        <hr>
+                                        <h5 class="card-title        ">Privacy by Design</h5>  
+                                        <p class="card-text"><?php echo $row['privacy_by_design']; ?></p>
+                                        <hr>
+                                        <h5 class="card-title     ">OWASP Top Ten</h5>
+                                        <p class="card-text"><?php echo $row['owasp_top_ten']; ?></p>
+                                        <hr>
+                                        <h5 class="card-title   ">CWE Top 25</h5>
+                                        <p class="card-text"><?php echo $row['cwe_top_25']; ?></p>
+                                        <hr>
+                                        <h5 class="card-title       ">Esempi</h5>
+                                        <p class="card-text"><?php echo $row['esempi']; ?></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Aggiungi qui gli altri campi della tabella come necessario -->
+                    </div>
                 </div>
             </div>
-        </div>
     <?php
         }
         echo '</div>'; // Chiudi il div della riga
@@ -85,10 +136,8 @@
 
     $conn->close();
     echo '</div>'; // Chiudi il div del container
-
-
     ?>
- <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white"></p>
         </div>
@@ -97,3 +146,15 @@
 </body>
 
 </html>
+
+
+<!-- nome	
+descrizione	
+context_pattern	
+collocazione_mvc	
+iso_9241_210_phase	
+article_gdpr	
+privacy_by_design	
+owasp_top_ten	
+cwe_top_25	
+esempi --> -->
